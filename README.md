@@ -1,9 +1,20 @@
 # Predicting Disney World Wait Times
 
-[Background] [Background]  
+  
 
 
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
+### Contents:
+
+* [Problem Statement](#Problem-Statement)  
+* [Background](#Background)
+* [Data](#Data)  
+ * [EDA and Data Cleaning](#EDA-and-Data-Cleaning) 
+  Data Dictionary
+* [Modeling](#Modeling)  
+ * [FB Prophet](#FB-Prophet)  
+* [Issues](#Issues)  
+* [Future Improvements](#Future-Improvements)  
+
 
 ## Problem Statement
 ---
@@ -15,12 +26,6 @@ Arbitrary case-insensitive reference text
 The Walt Disney Company ownes and operates the Walt Disney World resort in Florida.  Disney World is a huge resort area, encompasing close to 40 square miles in central Florida, just outside the city of Orlando. The resort was founded by Walt Disney in October of 1971 and opened with one theme park, the Magic Kingdom, and one on site hotel.  Since then, the resort has grown to consist of four theme parks, 2 water parks, a large shopping district, 4 golf courses, the ESPN sports complex, and 28 Disney owned hotels.   The 4 theme parks combined have 51 rides or attractions and countless experiences to entertain their guests.  
 
 Though there are many rides in the 4 theme parks,  the The Global Attractions Attendance Report from TEA/AECOM 2018 Theme Index estimates that over 58 million guests attended the parks in 2018, the last year attendance figures have been released.  With millions of guests visiting each park, most guests spend many hours of their day waiting in long lines.  
-
-
-## Executive Summary
----
-
-
 
 
 ## Data
@@ -50,10 +55,16 @@ Founded in 2012 by Len Testa, TouringPlans.com is a company offers customized pl
 TouringPlans.com also included a 'metadata' csv file that included 190 obversations about the Disney World resort on for each day of operation.  These range fron time of park opening and closing, percent of geographic schooll areas in session, special events, type of holiday season to the average temperature for the day. This data was accompanied by a detained data dictionary whhich I am including with this project. 
 
 
-## EDA and Data Cleaning
+### EDA and Data Cleaning
 ---
-The data started as 14 csv files that contained over a hundred thousand time obvervations and a wait times for each of the rides.  I created a series of notebooks, that imported the files, cleaned the date, formatted the data types, and averaged the observations for each hour before saving the data back to new csv files named for their respective rides.  I then created a notebook that imported the metadata file and seperated the observations or columns into 4 seperate csv files that represented a different theme park.  Each theme park csv was also given a set of columns that related to all of the theme parks.
+The data started as 14 csv files that contained over a hundred thousand time obvervations each and a wait times for each of the rides.  I created a series of notebooks, that imported the files, cleaned the date, formatted the data types, and averaged the observations for each hour before saving the data back to new csv files named for their respective rides.  I then created a notebook that imported the metadata file and seperated the observations or columns into 4 seperate csv files that represented a different theme park.  Each theme park csv was also given a set of columns that related to all of the theme parks.
 
+### Data Dictionary
+
+The data dictionary is provided by TouringPlans.com and is very comprehensive.  It is in an excel format, so it will not open in Github.
+
+
+[Link to the Data Dictionary](./touringplans_data_dictionary.xlsx)
 
 
 ## Modeling
@@ -77,11 +88,13 @@ In the process of modeling, I tried many different variations of each model with
 | Ada Boost | 12.17      |
 | SVM      | 10.61     | 
 | XG Boost      | 14.9      |  
-| FBprophet | 11.61      |
+| FBprophet | 11.17      |
 
 ### FB Prophet
-The first 8 models that I scored on the data were regression models that used the different aspects of time as features, as well as many of the other features in the modeling process.  I choose to model the data on a time series basis with a package I had never used before called fbprophet, developed by Facebook.  The website for Prophet describes it as, "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data."
+The first 8 models that I scored on the data were regression models that used the different aspects of time as features, as well as many of the other features in the modeling process.  I choose to model the data on a time series basis with a package I had never used before called fbprophet, developed by Facebook.  The website for Prophet describes it as, "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data" [[1]](#1).
 
+The FB Prophet package sets up the model that only takes in 2 columns.  The first is 'ds'
+that contains a datetime series and the second is 'y' that contains the feature that you are modeling - in this case the wait times for Pirates of the Caribbean.  I also used the built in holidays for seasonality.  One of the great ?features of this model is that it will predict out into the future.  The model was scored on RMSE and it performed well based on time and major holidays only, without additional features the other models were able to incorporate.
 
 ## Issues
 ---
@@ -90,9 +103,8 @@ The first 8 models that I scored on the data were regression models that used th
 1.  Few hourly features available, at most just 4 other rides in a very dynamic park ecosystem
 2.  No attendance figures available
 3.  Using hourly average 
-4. 
-5. 
-6. 
+4.  Estended downtime for rides affects future predictability
+5.  FB Prophet - negative predictions
 
 
 
@@ -102,8 +114,7 @@ The first 8 models that I scored on the data were regression models that used th
 * Try other models. SIRAMAX or Classification models to break wait time down into 5 minute buckets
 * Pick  1 or 2 of the best performing models and spend time tuning features/parameters
 * Incorporate metadata features from the 3 other parks like extra magic hour features
-* 
-*
+* FB Prophet - Input seasonal ranges around holidays
 
 
 ## Project Organization
@@ -137,7 +148,8 @@ The first 8 models that I scored on the data were regression models that used th
 ```
 
 
-https://www.aecom.com/wp-content/uploads/2019/05/Theme-Index-2018-4.pdf
-https://www.popsci.com/touring-plan-app-disney-lines/
-https://www.businessinsider.com/touringplans-disney-world-len-testa-interview-2019-5
-https://facebook.github.io/prophet/
+https://www.aecom.com/wp-content/uploads/2019/05/Theme-Index-2018-4.pdf  
+https://www.popsci.com/touring-plan-app-disney-lines/  
+https://www.businessinsider.com/touringplans-disney-world-len-testa-interview-2019-5 
+
+<a id="1">[1]</a>  https://facebook.github.io/prophet/
