@@ -159,7 +159,7 @@ The random forest was by best performing model according to the lowest RMSE scor
 ---
 <a id="1">[1]</a>  https://facebook.github.io/prophet/
 
-### Resources 
+### Sources 
 
 https://www.aecom.com/wp-content/uploads/2019/05/Theme-Index-2018-4.pdf  
 https://www.popsci.com/touring-plan-app-disney-lines/  
