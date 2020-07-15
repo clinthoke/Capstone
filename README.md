@@ -131,12 +131,7 @@ The random forest was by best performing model according to the lowest RMSE scor
 |   |__Castle.jpg
 |   |__entities.csv
 |   |__Pirates.png
-|__ 01_Raw_data_eda.ipynb
-|__ 02_Datetime_sorted_by_hour.ipynb
-|__ 03_Attractions_by_Park.ipnyb
-|__ 04_MetaData.ipynb
-|__ 05_MK-Pirates.ipynb
-|__ README.md
+|   |__touringplans_data_dictionary.xlsx
 |__ attractions
 |    (Folder contains a notebook for each park)
 |__ cleaned_data
@@ -147,10 +142,14 @@ The random forest was by best performing model according to the lowest RMSE scor
 |    (Folder contains 14 .csv, one for each ride)
 |__ raw_data
 |    (Folder contains 14 .csv, one for each ride)
+|__ 01_Raw_data_eda.ipynb
+|__ 02_Datetime_sorted_by_hour.ipynb
+|__ 03_Attractions_by_Park.ipnyb
+|__ 04_MetaData.ipynb
+|__ 05_Code.ipynb
 |__ Capstone_presentation.pdf
+|__ metadata.csv
 |__ README.md
-|__ touringplans_data_dictionary.xlsx
-
 ```
 
 
