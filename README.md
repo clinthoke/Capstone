@@ -84,13 +84,13 @@ In the process of modeling, I tried many different variations of each model with
 The first 8 models that I scored on the data were regression models that used the different aspects of time as features, as well as many of the other features in the modeling process.  I choose to model the data on a time series basis with a package I had never used before called fbprophet, developed by Facebook.  The website for Prophet describes it as, "Prophet is a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data" [[1]](#1).
 
 The FB Prophet package sets up the model that only takes in 2 columns.  The first is 'ds'
-that contains a datetime series and the second is 'y' that contains the feature that you are modeling - in this case the wait times for Pirates of the Caribbean.  I also used the built in holidays for seasonality.  One of the great ?features of this model is that it will predict out into the future.  The model was scored on RMSE and it performed well based on time and major holidays only, without additional features the other models were able to incorporate.
+that contains a datetime series and the second is 'y' that contains the feature that you are modeling - in this case the wait times for Pirates of the Caribbean.  I also used the built in holidays for seasonality.  One of the great aspects of this model is that it will predict out into the future.  The model was scored on RMSE and it performed well based on time and major holidays only, without additional features the other models were able to incorporate.
 
 ## Results/Conclusion
 
 The random forest was by best performing model according to the lowest RMSE score, 7.88.  FB Prophet performed well pertaining to time series only data.  The results for the Pirates of the Caribbean ride are listed below and the results for the other rides are listed on their individual modeling notebooks.
 
-### <p style="text-align: center;">Pirates of the Caribbeans</p>
+### <p style="text-align: center;">Pirates of the Caribbean</p>
 | Type of Model        | RMSE         | 
 | ------------- |:-------------:|
 | Linear Regression     | 11.82     | 
