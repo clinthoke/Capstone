@@ -136,6 +136,8 @@ The random forest was by best performing model according to the lowest RMSE scor
 |    (Folder contains a notebook for each park)
 |__ cleaned_data
 |    (Folder contains 14 .csv, one for each ride)
+|__ code
+|    (Folder contains 14 .csv, one for each ride)
 |__ attractions
 |    (Folder contains 14 .csv, one for each ride)
 |__ hourly_data
